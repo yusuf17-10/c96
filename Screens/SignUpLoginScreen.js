@@ -56,7 +56,7 @@ export default class SignUpLogin extends React.Component{
         firebase.auth().signInWithEmailAndPassword(email,password)
         .then(()=>{
             return(
-            Alert.alert("SuccessFully LoggedIn")
+            this.props.navigation.navigate("HomeScreen")
             )
         })
         .catch((error)=>{
@@ -153,12 +153,16 @@ export default class SignUpLogin extends React.Component{
                             value={this.state.confirmPassword}
                         />
 
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={()=>{
+                            this.userSignUp(this.state.emailId,this.state.password,this.state.confirmPassword)
+                         }}>
                             <Text style={styles.buttonText}>Register</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>Cancle</Text>
+                        <TouchableOpacity style={styles.button} onPress={()=>{
+                            this.setState({isModalVisible:false})
+                        }}>
+                            <Text style={styles.buttonText}>Cancel</Text>
                         </TouchableOpacity>
 
                         </KeyboardAvoidingView>
@@ -200,12 +204,16 @@ export default class SignUpLogin extends React.Component{
                 value={this.state.password}
                 />
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={()=>{
+                    this.userLogin(this.state.emailId,this.state.password)
+                }}>
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
                 
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={()=>{
+                            this.setState({isModalVisible:false})
+                        }}>
                     <Text style={styles.buttonText}>SignUp</Text>
                 </TouchableOpacity>
 
