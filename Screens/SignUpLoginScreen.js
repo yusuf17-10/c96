@@ -69,7 +69,7 @@ export default class SignUpLogin extends React.Component{
     showModal=()=>{
         return(
             <View>
-
+                {this.showModal}
                 <Modal
                 animationType="fade"
                 transparent={false}
@@ -98,7 +98,7 @@ export default class SignUpLogin extends React.Component{
 
                         <TextInput
                             style={styles.input}
-                            placeholder="Weight"
+                            placeholder="Height"
                             onChangeText={(text)=>{
                                 this.setState({height:text})
                             }}
@@ -212,7 +212,7 @@ export default class SignUpLogin extends React.Component{
                 
 
                 <TouchableOpacity style={styles.button} onPress={()=>{
-                            this.setState({isModalVisible:false})
+                            this.setState({isModalVisible:true})
                         }}>
                     <Text style={styles.buttonText}>SignUp</Text>
                 </TouchableOpacity>
