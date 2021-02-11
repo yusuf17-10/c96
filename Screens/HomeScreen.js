@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Text,View,StyleSheet} from "react-native"
-import {Card} from "react-native-elements"
+import {Card,Header} from "react-native-elements"
 import db from "../config";
 import firebase from "firebase";
 
@@ -40,7 +40,14 @@ export default class HomeScreen extends React.Component{
     }
     render(){
         return(
+
             <View>
+                <Header 
+                
+                backgroundColor="#FFAEBC"
+                centerComponent={{text:"Home Screen",style:{fontWeight:"bold",fontSize:30,color:"black",height:50}}}
+
+                />
                 <Card>
                     <Text>
                         {"Hi, "+this.state.firstName+" "+this.state.lastName}

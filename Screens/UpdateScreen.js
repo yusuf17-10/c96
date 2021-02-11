@@ -2,6 +2,8 @@ import * as React from "react";
 import {Text,View,TouchableOpacity,TextInput,StyleSheet,ToastAndroid} from "react-native";
 import firebase from "firebase";
 import db from "../config";
+import {Header} from "react-native-elements"
+
 export default class UpdateScreen extends React.Component{
     
     constructor(){
@@ -18,7 +20,7 @@ export default class UpdateScreen extends React.Component{
     }
 
     getUserDetails=()=>{
-        db.colection("user").where("emailId","==",this.state.emailId)
+        db.collection("user").where("emailId","==",this.state.emailId)
         .get()
         .then((snapshot)=>{
             snapshot.forEach((doc)=>{
@@ -57,7 +59,12 @@ export default class UpdateScreen extends React.Component{
         return(
 
             <View>
-                <Text>UPDATE SCREEN</Text>
+             <Header 
+                
+                backgroundColor="#FFAEBC"
+                centerComponent={{text:"Update Your Details",style:{fontWeight:"bold",fontSize:20,color:"black",height:50}}}
+
+                />
 
                 <TextInput
                             style={styles.input}
@@ -108,7 +115,7 @@ export default class UpdateScreen extends React.Component{
                       <TouchableOpacity style={styles.button} onPress={()=>{
                           this.updateUser()
                       }}>
-                          <Text>Update</Text>
+                          <Text style={styles.buttonText}>Update</Text>
                       </TouchableOpacity>
 
 
@@ -120,7 +127,10 @@ export default class UpdateScreen extends React.Component{
 const styles=StyleSheet.create({
     container:{
         alignItems:"center",
-        justifyContent:"center"
+        
+        
+        
+
     },
     input:{
         padding:20,
@@ -128,17 +138,22 @@ const styles=StyleSheet.create({
         justifyContent:"center",
         borderRadius:10,
         borderWidth:2,
-        marginTop:10
+        marginTop:20,
+        width:"70%",
+        alignSelf:"center",
+        backgroundColor:"#A0E7E5"
     },
 
     button:{
-        backgroundColor:"white",
+        backgroundColor:"#FBE7C6",
         padding:20,
         alignItems:"center",
         justifyContent:"center",
         borderRadius:10,
         borderWidth:2,
-        marginTop:10
+        marginTop:10,
+        width:"50%",
+        alignSelf:"center"
 
     },
   

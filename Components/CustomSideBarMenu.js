@@ -7,17 +7,17 @@ import firebase from "firebase";
 export default class CustomSideBarMenu extends React.Component{
     render(){
         return(
-            <View>
-                <View>
-                    <DrawerItems {...this.props}/>
+            <View style={{flex:1}}>
+                <View style={{flex:0.7,marginTop:20}}>
+                    <DrawerItems  {...this.props}/>
                 </View>
 
-                <View>
-                    <TouchableOpacity onPress={()=>{
+                <View style={{flex:0.2}}>
+                    <TouchableOpacity style={styles.button} onPress={()=>{
                         this.props.navigation.navigate("SignUpLogin")
                         firebase.auth().signOut()
                     }}>
-                        <Text>
+                        <Text style={styles.buttonText}>
                             LOGOUT
                         </Text>
                     </TouchableOpacity>
@@ -27,3 +27,24 @@ export default class CustomSideBarMenu extends React.Component{
         )
     }
 }
+
+const styles=StyleSheet.create({
+  
+
+    button:{
+        backgroundColor:"aqua",
+        padding:10,
+        alignItems:"center",
+        justifyContent:"center",
+        borderRadius:10,
+        borderWidth:2,
+        marginTop:10
+
+    },
+  
+    buttonText:{
+        fontSize:20,
+        fontWeight:"bold"
+    }
+    
+})

@@ -2,7 +2,7 @@ import * as React from "react";
 import {
 View,Text,StyleSheet,TouchableOpacity,Alert,TextInput,Modal,ScrollView,KeyboardAvoidingView
 } from "react-native";
-
+import{ Header} from "react-native-elements"
 import db from "../config";
 import firebase from "firebase";
 
@@ -22,6 +22,7 @@ export default class SignUpLogin extends React.Component{
             confirmPassword:""
         }
     }
+
 
 
     userSignUp=(email,password,confirmPassword)=>{
@@ -68,16 +69,20 @@ export default class SignUpLogin extends React.Component{
 
     showModal=()=>{
         return(
-            <View>
-                {this.showModal}
+            
+               
                 <Modal
                 animationType="fade"
                 transparent={false}
                 visible={this.state.isModalVisible}
                 >
-                    <ScrollView>
-                        <KeyboardAvoidingView>
-
+                    <ScrollView >
+                        <KeyboardAvoidingView style={{backgroundColor:"#B4F8C8"}}>
+                <Header
+                  backgroundColor="#FFAEBC"
+                  centerComponent={{text:"Registration",style:{fontWeight:"bold",fontSize:30,color:"black",height:50}}}
+  
+                />
                         <TextInput
                             style={styles.input}
                             placeholder="FirstName"
@@ -172,17 +177,31 @@ export default class SignUpLogin extends React.Component{
 
                 </Modal>
 
-            </View>
+           
             
         )
     }
 
     render(){
         return(
-            <View style={styles.container}>
-                <Text>
-                    Water Alarm
-                </Text>
+
+
+
+            <View >
+                <Header 
+                
+                backgroundColor="#FFAEBC"
+                centerComponent={{text:"Water Alarm",style:{fontWeight:"bold",fontSize:30,color:"black",height:50}}}
+
+                />
+
+
+
+                {
+                    this.showModal()
+                }
+
+                <View style={{backgroundColor:"#B4F8C8",width:"100%",height:"100%",paddingTop:40}}>
 
                 <TextInput
                 style={styles.input}
@@ -217,8 +236,7 @@ export default class SignUpLogin extends React.Component{
                     <Text style={styles.buttonText}>SignUp</Text>
                 </TouchableOpacity>
 
-
-
+                </View>
 
             </View>
         )
@@ -228,7 +246,10 @@ export default class SignUpLogin extends React.Component{
 const styles=StyleSheet.create({
     container:{
         alignItems:"center",
-        justifyContent:"center"
+        
+        
+        
+
     },
     input:{
         padding:20,
@@ -236,17 +257,22 @@ const styles=StyleSheet.create({
         justifyContent:"center",
         borderRadius:10,
         borderWidth:2,
-        marginTop:10
+        marginTop:20,
+        width:"70%",
+        alignSelf:"center",
+        backgroundColor:"#A0E7E5"
     },
 
     button:{
-        backgroundColor:"white",
+        backgroundColor:"#FBE7C6",
         padding:20,
         alignItems:"center",
         justifyContent:"center",
         borderRadius:10,
         borderWidth:2,
-        marginTop:10
+        marginTop:10,
+        width:"50%",
+        alignSelf:"center"
 
     },
   
